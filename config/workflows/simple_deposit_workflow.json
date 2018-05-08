@@ -9,21 +9,14 @@
                 {
                     "name": "deposit",
                     "from_states": [],
-                    "transition_to": "pending_review",
-                    "notifications": [
-                        {
-                            "notification_type": "email",
-                            "name": "Hyrax::Workflow::PendingReviewNotification",
-                            "to": ["approving"]
-                        }
-                    ],
+                    "transition_to": "draft",
                     "methods": [
                         "Hyrax::Workflow::DeactivateObject"
                     ]
                 }, {
                     "name": "request_changes",
-                    "from_states": [{"names": ["deposited", "pending_review"], "roles": ["approving"]}],
-                    "transition_to": "changes_required",
+                    "from_states": [{"names": ["draft", "pending_review"], "roles": ["approving"]}],
+                    "transition_to": "draft",
                     "notifications": [
                         {
                             "notification_type": "email",
@@ -50,23 +43,6 @@
                         "Hyrax::Workflow::GrantReadToDepositor",
                         "Hyrax::Workflow::RevokeEditFromDepositor",
                         "Hyrax::Workflow::ActivateObject"
-                    ]
-                }, {
-                    "name": "request_review",
-                    "from_states": [{"names": ["changes_required"], "roles": ["depositing"]}],
-                    "transition_to": "pending_review",
-                    "notifications": [
-                        {
-                            "notification_type": "email",
-                            "name": "Hyrax::Workflow::PendingReviewNotification",
-                            "to": ["approving"]
-                        }
-                    ]
-                }, {
-                    "name": "comment_only",
-                    "from_states": [
-                        { "names": ["pending_review", "deposited"], "roles": ["approving"] },
-                        { "names": ["changes_required"], "roles": ["depositing"] }
                     ]
                 }
             ]
