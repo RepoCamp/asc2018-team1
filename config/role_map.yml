@@ -1,6 +1,8 @@
 development:
   archivist:
     - archivist1@example.com
+  admin:
+    - admin@example.com
 
 test:
   archivist:
@@ -21,6 +23,7 @@ test:
 
 production:
   admin:
+    - admin@example.com
     - bess@curationexperts.com
     - tom@curationexperts.com
     - mark@curationexperts.com
