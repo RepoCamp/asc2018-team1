@@ -3,7 +3,7 @@
     <div class="navbar-text text-left">
         <p><%= t('hyrax.footer.service_html') %></p>
         <p><%= t('hyrax.product_name') %> v<%= Hyrax::VERSION %></p>
-	<p>Hello, this is our fantastic mod!</p>
+    <p>Version <span title="<%= GIT_SHA %>"><%= BRANCH %> updated <%= LAST_DEPLOYED %></span></p>
     </div>
     <div class="navbar-right">
       <div class="navbar-text text-right">

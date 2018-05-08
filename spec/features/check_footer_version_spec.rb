@@ -8,7 +8,8 @@ RSpec.feature 'Check footer', js: false do
   context 'a guest user' do
     scenario do
       visit root_path
-      expect(page).to have_content("Date")
+      expect(page).to have_content("updated")
+      expect(page).to have_content("Version")
     end
   end
 end
