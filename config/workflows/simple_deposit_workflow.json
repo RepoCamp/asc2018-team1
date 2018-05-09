@@ -15,6 +15,17 @@
                         "Hyrax::Workflow::GrantEditToDepositor"
                     ]
                 }, {
+                    "name": "request_review",
+                    "from_states": [{"names": ["draft"], "roles": ["depositing"]}],
+                    "transition_to": "pending_review",
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::PendingReviewNotification",
+                            "to": ["approving"]
+                        }
+                    ]
+                }, {
                     "name": "request_changes",
                     "from_states": [{"names": ["draft", "pending_review"], "roles": ["approving"]}],
                     "transition_to": "draft",

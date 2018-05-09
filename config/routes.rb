@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount Blacklight::Engine => '/'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/jobs'
   
     concern :searchable, Blacklight::Routes::Searchable.new
 
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'
