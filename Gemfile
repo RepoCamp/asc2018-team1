@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'hyrax', '2.1.0.rc1'
+gem 'hydra-role-management'
 
 gem 'sidekiq'
 
